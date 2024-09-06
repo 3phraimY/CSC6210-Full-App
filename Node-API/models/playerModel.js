@@ -16,6 +16,10 @@ const playerSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  Experience: {
+    type: Number,
+    required: true,
+  },
 });
 playerSchema.set("collection", "Roster");
 module.exports = mongoose.model("Player", playerSchema);
