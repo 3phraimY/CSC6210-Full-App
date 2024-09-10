@@ -1,0 +1,32 @@
+.add-player-icon {
+  margin-left: -18px;
+}
+.add-player-button {
+  border-style: solid;
+  border-color: cornflowerblue;
+  border-width: 10px;
+  border-radius: 25px;
+  background: cornflowerblue;
+  margin: 10px;
+  width: 120px;
+  height: 190px;
+}
+.add-player-form {
+  border-style: solid;
+  border-color: cornflowerblue;
+  border-width: 10px;
+  border-radius: 25px;
+  background: cornflowerblue;
+  margin: 10px;
+  width: 100px;
+  height: 170px;
+}
+.add-player-input {
+  width: 90px;
+  background-color: cornflowerblue;
+  border-style: solid;
+  border-color: black;
+}
+.add-player-submit {
+  background-color: cornflowerblue;
+}

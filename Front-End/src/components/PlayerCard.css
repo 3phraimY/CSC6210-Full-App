@@ -1,0 +1,17 @@
+.player-card {
+  border-style: solid;
+  border-color: cornflowerblue;
+  border-width: 10px;
+  border-radius: 25px;
+  background: cornflowerblue;
+  margin: 10px;
+  width: 100px;
+  height: 170px;
+}
+.player-name {
+  font-weight: 700;
+}
+.delete-button {
+  padding: 0px;
+  background-color: cornflowerblue;
+}
