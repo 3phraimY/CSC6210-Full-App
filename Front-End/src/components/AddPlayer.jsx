@@ -3,6 +3,7 @@ import { postPlayer } from "../hooks/player-API";
 import "./AddPlayer.css";
 
 export function AddPlayer({ setPlayersChanged }) {
+  //tracks whether user has clicked on add button
   const [displayAddPlayer, setDisplayAddPlayer] = useState(false);
   const [playerName, setPlayerName] = useState("Name");
   const [playerNumber, setPlayerNumber] = useState(99);
@@ -11,6 +12,8 @@ export function AddPlayer({ setPlayersChanged }) {
   const [playerExperience, setPlayerExperience] = useState(99);
 
   const createPlayerJson = () => {
+    // json is same structure as database
+    // takes in the values of all inputs in forms and converts to json
     const json = {
       Name: playerName,
       Number: playerNumber,
@@ -21,12 +24,16 @@ export function AddPlayer({ setPlayersChanged }) {
     return json;
   };
   function handleSubmit(event) {
+    //stops default behavior of refreshing page
     event.preventDefault();
+    //posts the json created
     postPlayer(createPlayerJson());
+    //sets flag for playerGrid to refresh players data
     setPlayersChanged(true);
   }
   return (
     <>
+      {/* only renders when user has not clicked add button */}
       {!displayAddPlayer && (
         <button
           className="add-player-button"
@@ -43,12 +50,15 @@ export function AddPlayer({ setPlayersChanged }) {
           </svg>
         </button>
       )}
+      {/* renders when user has clicked on add button */}
       {displayAddPlayer && (
         <>
           <form className="add-player-form" onSubmit={(e) => handleSubmit(e)}>
             <input
               className="add-player-input"
+              // updates current value whenever user types
               value={playerName}
+              // passes in the value of this element for json construction
               onChange={(e) => setPlayerName(e.target.value)}
             ></input>
             <input

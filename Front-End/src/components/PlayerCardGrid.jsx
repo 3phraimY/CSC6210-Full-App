@@ -4,11 +4,16 @@ import { PlayerCard } from "./PlayerCard";
 import { usePlayers, useUpdatePlayers } from "../contexts/PlayersContext";
 import { AddPlayer } from "./AddPlayer";
 
+//function for grid of player cards
+
 function PlayerCardGrid() {
   const players = usePlayers();
   const setPlayers = useUpdatePlayers();
+
+  //used as flag for when players are changed through delete or insert
   const [playersChanged, setPlayersChanged] = useState(false);
 
+  //fetches all player data
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
@@ -20,10 +25,12 @@ function PlayerCardGrid() {
     };
     fetchPlayers();
     setPlayersChanged(false);
+    //calls useEffect whenever flag changes
   }, [playersChanged]);
 
   return (
     <>
+      {/* iterates through all elements in players array and creates player card for each */}
       {players.players.map((Player) => (
         <PlayerCard
           key={Player._id}
@@ -31,6 +38,7 @@ function PlayerCardGrid() {
           setPlayersChanged={setPlayersChanged}
         />
       ))}
+      {/* creates an add player card to end of grid */}
       <AddPlayer setPlayersChanged={setPlayersChanged} />
     </>
   );

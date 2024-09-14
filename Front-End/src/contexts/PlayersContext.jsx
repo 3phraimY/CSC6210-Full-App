@@ -1,5 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
+//global context for player data
+
 const PlayersContext = createContext();
 const UpdatePlayersContext = createContext();
 

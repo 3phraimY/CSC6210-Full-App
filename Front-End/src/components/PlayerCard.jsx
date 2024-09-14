@@ -4,8 +4,10 @@ import "./PlayerCard.css";
 
 export function PlayerCard({ PlayerData, setPlayersChanged }) {
   function handleSubmit(event) {
+    //stops default behavior of refreshing page
     event.preventDefault();
     deletePlayer(PlayerData._id);
+    //sets flag for playerGrid to refresh players data
     setPlayersChanged(true);
   }
   return (

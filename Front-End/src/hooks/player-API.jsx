@@ -1,10 +1,11 @@
 import axios from "axios";
 
+//functions for all API actions
+
 const BaseUrl = "http://localhost:3000/api/players";
 export async function postPlayer(playerJson) {
   try {
-    const response = await axios.post(`${BaseUrl}/`, playerJson);
-    console.log("Post player", response);
+    await axios.post(`${BaseUrl}/`, playerJson);
   } catch (error) {
     console.error("Error posting player: ", error);
   }
@@ -20,8 +21,7 @@ export async function getAllPlayers() {
 }
 export async function deletePlayer(playerID) {
   try {
-    const response = await axios.delete(`${BaseUrl}/${playerID}`);
-    console.log("Player Deleted", response);
+    await axios.delete(`${BaseUrl}/${playerID}`);
   } catch (error) {
     console.error("Error deleting player: ", error);
   }
