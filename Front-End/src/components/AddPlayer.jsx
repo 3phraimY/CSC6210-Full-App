@@ -9,6 +9,7 @@ export function AddPlayer() {
   const [playerPosition, setPlayerPosition] = useState("Pos");
   const [playerAge, setPlayerAge] = useState(99);
   const [playerExperience, setPlayerExperience] = useState(99);
+  const [playersChanged, setPlayersChanged] = useState(false);
 
   const createPlayerJson = () => {
     const json = {
@@ -23,9 +24,11 @@ export function AddPlayer() {
     //console.log(converted);
     return json;
   };
+
   function handleSubmit(event) {
-    //event.preventDefault();
+    event.preventDefault();
     postPlayer(createPlayerJson());
+    setPlayersChanged(true);
   }
   return (
     <>
