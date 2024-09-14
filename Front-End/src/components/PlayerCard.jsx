@@ -2,35 +2,31 @@ import React, { useEffect, useState } from "react";
 import { deletePlayer } from "../hooks/player-API";
 import "./PlayerCard.css";
 
-export function PlayerCard(PlayerData) {
-  const [playerJson, setPlayerJson] = useState([]);
-
-  useEffect(() => {
-    setPlayerJson(PlayerData.PlayerData);
-    console.log("set Json");
-  }, []);
+export function PlayerCard({ PlayerData, setPlayersChanged }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    deletePlayer(PlayerData._id);
+    setPlayersChanged(true);
+  }
   return (
     <>
-      <form id={playerJson._id} className="player-card">
-        {playerJson.Name && (
-          <div className="player-name"> {playerJson.Name}</div>
+      <form id={PlayerData._id} className="player-card">
+        {PlayerData.Name && (
+          <div className="player-name"> {PlayerData.Name}</div>
         )}
-        {playerJson.Number && (
-          <div className="player-number"> #{playerJson.Number}</div>
+        {PlayerData.Number && (
+          <div className="player-number"> #{PlayerData.Number}</div>
         )}
-        {playerJson.Position && (
-          <div className="player-position"> Pos: {playerJson.Position}</div>
+        {PlayerData.Position && (
+          <div className="player-position"> Pos: {PlayerData.Position}</div>
         )}
-        {playerJson.Age && (
-          <div className="player-age"> Age: {playerJson.Age}</div>
+        {PlayerData.Age && (
+          <div className="player-age"> Age: {PlayerData.Age}</div>
         )}
-        {!isNaN(playerJson.Experience) && (
-          <div className="player-experience"> Exp: {playerJson.Experience}</div>
+        {!isNaN(PlayerData.Experience) && (
+          <div className="player-experience"> Exp: {PlayerData.Experience}</div>
         )}
-        <button
-          className="delete-button"
-          onClick={() => deletePlayer(playerJson._id)}
-        >
+        <button className="delete-button" onClick={(e) => handleSubmit(e)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

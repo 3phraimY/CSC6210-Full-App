@@ -13,7 +13,6 @@ export async function getAllPlayers() {
   try {
     const response = await axios.get(`${BaseUrl}/`);
     const responseData = response.data;
-    console.log("Get all players", responseData);
     return responseData;
   } catch (error) {
     console.error("Error getting all players: ", error);

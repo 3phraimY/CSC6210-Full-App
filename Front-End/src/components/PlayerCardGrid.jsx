@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllPlayers } from "../hooks/player-API";
 import { PlayerCard } from "./PlayerCard";
 import { usePlayers, useUpdatePlayers } from "../contexts/PlayersContext";
@@ -7,27 +7,31 @@ import { AddPlayer } from "./AddPlayer";
 function PlayerCardGrid() {
   const players = usePlayers();
   const setPlayers = useUpdatePlayers();
+  const [playersChanged, setPlayersChanged] = useState(false);
 
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
         const playersData = await getAllPlayers();
-        console.log("Fetched players data:", playersData);
-
         setPlayers(playersData);
       } catch (error) {
         console.error("Error fetching players: ", error);
       }
     };
     fetchPlayers();
-  }, []);
+    setPlayersChanged(false);
+  }, [playersChanged]);
 
   return (
     <>
       {players.players.map((Player) => (
-        <PlayerCard key={Player._id} PlayerData={Player} />
+        <PlayerCard
+          key={Player._id}
+          PlayerData={Player}
+          setPlayersChanged={setPlayersChanged}
+        />
       ))}
-      <AddPlayer />
+      <AddPlayer setPlayersChanged={setPlayersChanged} />
     </>
   );
 }

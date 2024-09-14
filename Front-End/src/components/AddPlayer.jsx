@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { postPlayer } from "../hooks/player-API";
 import "./AddPlayer.css";
 
-export function AddPlayer() {
+export function AddPlayer({ setPlayersChanged }) {
   const [displayAddPlayer, setDisplayAddPlayer] = useState(false);
   const [playerName, setPlayerName] = useState("Name");
   const [playerNumber, setPlayerNumber] = useState(99);
   const [playerPosition, setPlayerPosition] = useState("Pos");
   const [playerAge, setPlayerAge] = useState(99);
   const [playerExperience, setPlayerExperience] = useState(99);
-  const [playersChanged, setPlayersChanged] = useState(false);
 
   const createPlayerJson = () => {
     const json = {
@@ -19,12 +18,8 @@ export function AddPlayer() {
       Age: playerAge,
       Experience: playerExperience,
     };
-
-    //const converted = JSON.stringify(json, null, 2);
-    //console.log(converted);
     return json;
   };
-
   function handleSubmit(event) {
     event.preventDefault();
     postPlayer(createPlayerJson());
