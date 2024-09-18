@@ -3,6 +3,7 @@ import { getAllPlayers } from "../hooks/player-API";
 import { PlayerCard } from "./PlayerCard";
 import { usePlayers, useUpdatePlayers } from "../contexts/PlayersContext";
 import { AddPlayer } from "./AddPlayer";
+import "./PlayerCardGrid.css";
 
 //function for grid of player cards
 
@@ -30,16 +31,18 @@ function PlayerCardGrid() {
 
   return (
     <>
-      {/* iterates through all elements in players array and creates player card for each */}
-      {players.players.map((Player) => (
-        <PlayerCard
-          key={Player._id}
-          PlayerData={Player}
-          setPlayersChanged={setPlayersChanged}
-        />
-      ))}
-      {/* creates an add player card to end of grid */}
-      <AddPlayer setPlayersChanged={setPlayersChanged} />
+      <div className="player-grid">
+        {/* iterates through all elements in players array and creates player card for each */}
+        {players.players.map((Player) => (
+          <PlayerCard
+            key={Player._id}
+            PlayerData={Player}
+            setPlayersChanged={setPlayersChanged}
+          />
+        ))}
+        {/* creates an add player card to end of grid */}
+        <AddPlayer setPlayersChanged={setPlayersChanged} />
+      </div>
     </>
   );
 }

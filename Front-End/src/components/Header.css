@@ -1,0 +1,9 @@
+.header-text {
+  width: 100vw;
+  background: aquamarine;
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  height: 50px;
+}

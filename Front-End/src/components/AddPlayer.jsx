@@ -30,6 +30,14 @@ export function AddPlayer({ setPlayersChanged }) {
     postPlayer(createPlayerJson());
     //sets flag for playerGrid to refresh players data
     setPlayersChanged(true);
+
+    //reset values
+    setDisplayAddPlayer(false);
+    setPlayerName("Name");
+    setPlayerNumber(99);
+    setPlayerPosition("Pos");
+    setPlayerAge(99);
+    setPlayerExperience(99);
   }
   return (
     <>
